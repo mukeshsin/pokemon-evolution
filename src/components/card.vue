@@ -15,38 +15,44 @@
 
 <script>
 export default {
-    name: "Cards",
+    name: "pokemonCard",
 }
 </script>
 
 <style scoped>
 .card {
     border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 20px;
-    width: 300px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin: 10px;
+    width: 400px;
+    float: right;
 }
 
 .card-header {
-    background-color: #f2f2f2;
+    background-color: #eee;
+    border-bottom: 2px solid #ccc;
+    font-weight: bold;
+    font-size: 20px;
     padding: 10px;
     text-align: center;
-}
-
-.card-header h2 {
-    margin: 0;
-    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card-body {
+    display: flex;
+    justify-content: center;
     padding: 10px;
 }
 
 .card-footer {
-    background-color: #f2f2f2;
+    border-top: 1px solid #ccc;
     padding: 10px;
     text-align: center;
-    font-size: 14px;
+    height: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+
 }
 </style>

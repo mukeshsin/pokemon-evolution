@@ -1,14 +1,14 @@
 <template>
 <div class="cardWrapper">
-    <Cards v-for="pokemon in pokemons" :key="pokemon.id" @click.prevent="evolvePokemon(pokemon.id)">
-        <template v-slot:description>{{ pokemon.name }} # {{ pokemon.id }}</template>
-        <template v-slot:content><img :src="pokemon.img" /></template>
+    <pokemonCard v-for="pokemon in pokemons" :key="pokemon.id" @click.prevent="evolvePokemon(pokemon.id)" class="evolvepoke">
+        <template v-slot:title>{{ pokemon.name }} # {{ pokemon.id }}</template>
+        <template v-slot:content><img :src="pokemon.img" class="adjustImg" /></template>
         <template v-slot:footer>
-            <div v-for="type in pokemon.types" :key="type.slot">
+            <div v-for="type in pokemon.types" :key="type.slot" class="typeName">
                 {{ type.type.name }}
             </div>
         </template>
-    </Cards>
+    </pokemonCard>
 </div>
 </template>
 
@@ -16,18 +16,17 @@
 import {
     ref
 } from "@vue/reactivity";
-import Cards from "./card.vue";
+import pokemonCard from "./card.vue";
 export default {
-    name: "pokemonCards",
+    name: "PokemonCards",
     props: ["pokemons"],
     emits: ["evolve", "ids"],
     components: {
-        Cards
+        pokemonCard
     },
     setup(props, {
         emit
     }) {
-        const isOpace = ref(true);
         const ids = ref("");
 
         function evolvePokemon(id) {
@@ -36,7 +35,6 @@ export default {
         }
         return {
             evolvePokemon,
-            isOpace,
             ids
         };
     },
@@ -44,4 +42,16 @@ export default {
 </script>
 
 <style scoped>
+.adjustImg {
+    width: 200px
+}
+
+.typeName {
+    font-size: 20px;
+}
+
+.evolvepoke {
+    float: left;
+
+}
 </style>
